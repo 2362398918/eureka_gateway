@@ -1,0 +1,17 @@
+server:
+  port: 9000
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: gateway-service
+
+#\u81EA\u5B9A\u4E49\u8DEF\u7531\u89C4\u5219
+zuul:
+  routes:
+    gao-goods-login-service: /eureka/goods/**     #登录
+    order-service: /eureka/order/**
+  ignored-patterns: /*-service/**
+  sensitive-headers:
